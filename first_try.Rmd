@@ -1,0 +1,24 @@
+---
+title: "first_try.Rmd"
+author: "Sander Tan"
+date: "March 7, 2016"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+inp_data <- read.table("~/Dropbox/Data/Kaggle_Titanic/train.csv", header = T, sep = ",")
+
+head(inp_data)
+
+sel_data <- inp_data[!is.na(sel_data$Age) ,c(1, 2, 6)]
+sel_data$Survived <- as.factor(sel_data$Survived)
+head(sel_data)
+
+ggplot(sel_data, aes(x = Survived, y = Age, group = Survived, col = Survived)) + geom_boxplot()
+
+```
+
